@@ -76,3 +76,26 @@ private:
         }
     }
 };
+
+class MyKMP{
+public:
+
+private:
+    std::string pattern_; // 存储模式串
+    std::vector<int> next;
+    
+    void getNext(std::string& pattern){
+        int j = 0;
+        int k = -1;
+        next[0] = -1;
+        while(j < pattern.size()){
+            if(k == -1 || pattern[j] == pattern[k]){
+                k++;
+                j++;
+                next[j] = k;
+            }else{
+                k = next[k];
+            }
+        }
+    }
+};
